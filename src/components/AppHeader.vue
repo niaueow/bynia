@@ -6,7 +6,7 @@
         <div class="w-8 h-8 bg-blue border-[2.5px] border-black flex items-center justify-center">
           <span class="text-white font-extrabold text-base leading-none">n</span>
         </div>
-        <span class="text-black font-bold text-sm tracking-tight">bynia Tiny Links</span>
+        <span class="text-black font-bold text-sm tracking-tight">bynia tiny links</span>
       </router-link>
 
       <!-- Login / Admin Button -->
