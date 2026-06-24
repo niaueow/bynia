@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { getSession, isAdmin } from '@/lib/auth'
+import { getUser, isAdmin } from '@/lib/auth'
 
 import HomePage from '@/pages/HomePage.vue'
 import NotFoundPage from '@/pages/NotFoundPage.vue'
@@ -46,12 +46,11 @@ const router = createRouter({
 // Navigation guard for admin routes
 router.beforeEach(async (to, from, next) => {
   if (to.meta.requiresAuth) {
-    const { session } = await getSession()
-    if (!session) {
+    const { user } = await getUser()
+    if (!user) {
       return next({ name: 'Login' })
     }
-    const email = session.user?.email
-    if (!isAdmin(email)) {
+    if (!isAdmin(user.email)) {
       return next({ name: 'Login', query: { error: 'access_denied' } })
     }
   }
